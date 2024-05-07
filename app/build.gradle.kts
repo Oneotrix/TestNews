@@ -1,6 +1,8 @@
 plugins {
     alias(core.plugins.androidApplication)
     alias(core.plugins.jetbrainsKotlinAndroid)
+    alias(core.plugins.kotlin.serialization)
+    alias(core.plugins.kotlin.kapt)
 }
 
 android {
@@ -33,9 +35,15 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
+
+    kapt(storage.room.compiler)
+    kapt(ioc.dagger.compiler)
 
     implementation(core.androidx.core.ktx)
     implementation(core.androidx.appcompat)
@@ -46,6 +54,21 @@ dependencies {
     implementation(core.navigation.ui)
     implementation(core.navigation.fragment)
 
+    // Network
+    implementation(network.okhttp)
+    implementation(network.okhttp.loggingInterceptor)
+    implementation(network.retrofit)
+    implementation(network.retrofit.kotlinx.serialization)
+
+    //Database
+    implementation(storage.room.runtime)
+    implementation(storage.room.ktx)
+
+    //DI
+    implementation(ioc.dagger.dagger)
+
+    //Coroutine
+    implementation(asynchronously.coroutines)
 
     testImplementation(test.junit)
     androidTestImplementation(test.androidx.junit)

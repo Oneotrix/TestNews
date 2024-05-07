@@ -1,0 +1,7 @@
+[versions]
+# Dagger2
+dagger = "2.50"
+
+[libraries]
+dagger-dagger = { module = "com.google.dagger:dagger", version.ref = "dagger"}
+dagger-compiler = { module = "com.google.dagger:dagger-compiler", version.ref = "dagger" }

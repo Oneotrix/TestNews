@@ -2,4 +2,6 @@
 plugins {
     alias(core.plugins.androidApplication) apply false
     alias(core.plugins.jetbrainsKotlinAndroid) apply false
+    alias(core.plugins.kotlin.serialization) apply false
+    alias(core.plugins.kotlin.kapt) apply false
 }

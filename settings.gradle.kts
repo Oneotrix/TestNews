@@ -24,6 +24,20 @@ dependencyResolutionManagement {
         create("test") {
             from(files("version-catalog/test.toml"))
         }
+        create("network") {
+            from(files("version-catalog/network.toml"))
+        }
+        create("storage") {
+            from(files("version-catalog/storage.toml"))
+        }
+        create("ioc") {
+            from(files("version-catalog/ioc.toml"))
+        }
+        create("asynchronously") {
+            from(files("version-catalog/asynchronously.toml"))
+        }
+
+
     }
 }
 
