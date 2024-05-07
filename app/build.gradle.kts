@@ -70,6 +70,9 @@ dependencies {
     //Coroutine
     implementation(asynchronously.coroutines)
 
+    // Serialization
+    implementation(core.kotlinx.serializarion)
+
     testImplementation(test.junit)
     androidTestImplementation(test.androidx.junit)
     androidTestImplementation(test.androidx.espresso.core)
