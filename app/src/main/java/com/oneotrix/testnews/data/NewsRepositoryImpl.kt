@@ -1,10 +1,15 @@
 package com.oneotrix.testnews.data
 
+import com.oneotrix.testnews.data.remote.RemoteDataSource
+import com.oneotrix.testnews.domain.models.Category
 import com.oneotrix.testnews.domain.repository.NewsRepository
 
-class NewsRepositoryImpl: NewsRepository {
-    override fun getCategories() {
-        TODO("Not yet implemented")
+class NewsRepositoryImpl(
+    private val remoteDataSource: RemoteDataSource
+): NewsRepository {
+    override suspend fun getCategories(): List<Category> {
+        return remoteDataSource.getCategories().list
+            .map { MapperData.mapCategoriesResponse(it) }
     }
 
     override fun getAllNewsByCategory(categoryId: Long) {

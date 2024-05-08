@@ -19,6 +19,9 @@ class NewsFragment: BaseFragment<FragmentNewsBinding>(
 
     private val viewModel: NewsViewModel by viewModels { viewModelFactory }
 
+    private val categoryId by lazy {
+        arguments?.getInt("id") ?: 0
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
 

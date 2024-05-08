@@ -1,8 +1,10 @@
 package com.oneotrix.testnews.domain.repository
 
+import com.oneotrix.testnews.domain.models.Category
+
 interface NewsRepository {
 
-    fun getCategories()
+    suspend fun getCategories(): List<Category>
 
     fun getAllNewsByCategory(categoryId: Long)
 
