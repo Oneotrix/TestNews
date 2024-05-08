@@ -11,13 +11,15 @@ class NewsViewModelFactory @Inject constructor (
     private val getFirstPageNewsByCategoryUseCase: GetFirstPageNewsByCategory,
     private val getPrevPageNewsUseCase: GetPrevPageNewsUseCase,
     private val getNextPageNewsUseCase: GetNextPageNewsUseCase,
+    private val id: Int,
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return NewsViewModel(
             getFirstPageNewsByCategoryUseCase,
             getPrevPageNewsUseCase,
-            getNextPageNewsUseCase
+            getNextPageNewsUseCase,
+            id
         ) as T
     }
 

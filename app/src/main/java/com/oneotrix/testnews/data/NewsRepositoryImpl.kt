@@ -2,6 +2,7 @@ package com.oneotrix.testnews.data
 
 import com.oneotrix.testnews.data.remote.RemoteDataSource
 import com.oneotrix.testnews.domain.models.Category
+import com.oneotrix.testnews.domain.models.ShortNews
 import com.oneotrix.testnews.domain.repository.NewsRepository
 
 class NewsRepositoryImpl(
@@ -12,12 +13,22 @@ class NewsRepositoryImpl(
             .map { MapperData.mapCategoriesResponse(it) }
     }
 
-    override fun getAllNewsByCategory(categoryId: Long) {
-        TODO("Not yet implemented")
+    override suspend fun getCountPagesByCategory(categoryId: Long): Int {
+        var page = 0
+
+        while (true) {
+            when(remoteDataSource.isPageEmpty(categoryId, page)) {
+                true -> break
+                false -> page++
+            }
+        }
+
+        return page
     }
 
-    override fun getNewsPageByCategory(categoryId: Long, page: Int) {
-        TODO("Not yet implemented")
+    override suspend fun getNewsPageByCategory(categoryId: Long, page: Int): List<ShortNews> {
+        return remoteDataSource.getNewsPage(categoryId, page).list
+            .map { MapperData.mapNewsResponse(it) }
     }
 
     override fun getNewsDetail(id: Long) {

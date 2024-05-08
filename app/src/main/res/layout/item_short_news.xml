@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="10dp"
+    >
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        tools:text="@string/app_name"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        tools:text="Участники международного проекта KISS (Klyuchevskoy Investigation — Seismic Structure of Extraordinary Volcanic System) по изучению Ключевского вулкана, накануне выбросившего пепел на высоту 11 км..."
+        android:textStyle="normal"
+        android:gravity="center"
+        android:maxLines="5"
+        android:layout_marginTop="10dp"
+        />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        tools:text="2016-09-07T11:15:21.104Z"
+        android:textStyle="italic"
+        android:gravity="center"
+        android:maxLines="1"
+        android:layout_marginTop="10dp"
+        />
+
+
+
+</LinearLayout>
