@@ -7,14 +7,17 @@ import com.oneotrix.testnews.databinding.ItemShortNewsBinding
 import com.oneotrix.testnews.domain.models.ShortNews
 import com.oneotrix.testnews.utils.Comparator
 
-class NewsAdapter : ListAdapter<ShortNews, NewsViewHolder>(Comparator.newsComparator) {
+class NewsAdapter(
+    private val callback: (id: Int, title: String, shortDescription: String) -> Unit
+) : ListAdapter<ShortNews, NewsViewHolder>(Comparator.newsComparator) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         return NewsViewHolder(
             binding = ItemShortNewsBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ),
+            callback = callback
         )
     }
 

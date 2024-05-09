@@ -23,7 +23,21 @@
         android:label="NewsFragment" >
         <action
             android:id="@+id/action_newsFragment_to_newsDetailFragment"
-            app:destination="@id/newsDetailFragment" />
+            app:destination="@id/newsDetailFragment" >
+            <argument
+                android:name="id"
+                app:argType="integer"
+                android:defaultValue="-1" />
+            <argument
+                android:name="title"
+                app:argType="string"
+                android:defaultValue="title" />
+            <argument
+                android:name="shortDescription"
+                app:argType="string"
+                android:defaultValue="short Description" />
+
+        </action>
         <action
             android:id="@+id/action_newsFragment_to_categoriesFragment"
             app:destination="@id/categoriesFragment" />

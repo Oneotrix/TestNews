@@ -63,6 +63,14 @@ class CategoriesFragment: BaseFragment<FragmentCategoriesBinding>(
 
     }
 
+    private fun navigateToNewsFragment(id: Int) {
+        val bundle = bundleOf("id" to id)
+        MainActivity.navigationComponent.navigationController().navigate(
+            R.id.action_categoriesFragment_to_newsFragment,
+            bundle,
+        )
+    }
+
     private fun observeState() {
         viewModel.state
             .onEach { adapter.submitList(it) }
@@ -79,11 +87,4 @@ class CategoriesFragment: BaseFragment<FragmentCategoriesBinding>(
         binding.rvCategories.addItemDecoration(decorator)
     }
 
-    private fun navigateToNewsFragment(id: Int) {
-        val bundle = bundleOf("id" to id)
-        MainActivity.navigationComponent.navigationController().navigate(
-            R.id.action_categoriesFragment_to_newsFragment,
-            bundle,
-        )
-    }
 }

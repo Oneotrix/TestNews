@@ -1,14 +1,15 @@
 package com.oneotrix.testnews.view.news
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import com.oneotrix.testnews.App
+import com.oneotrix.testnews.MainActivity
+import com.oneotrix.testnews.R
 import com.oneotrix.testnews.databinding.FragmentNewsBinding
 import com.oneotrix.testnews.view.BaseFragment
 import com.oneotrix.testnews.view.news.adapter.NewsAdapter
@@ -33,7 +34,9 @@ class NewsFragment: BaseFragment<FragmentNewsBinding>(
     }
 
     private val adapter by lazy {
-        NewsAdapter()
+        NewsAdapter { id, title, shortDescription ->
+            navigateToDetailsNewsFragment(id, title, shortDescription)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +56,18 @@ class NewsFragment: BaseFragment<FragmentNewsBinding>(
         observeState()
         setupListeners()
         initRecycler()
+    }
+
+    private fun navigateToDetailsNewsFragment(id: Int, title: String, shortDescription: String) {
+        val bundle = bundleOf(
+            "id" to id,
+            "title" to title,
+            "shortDescription" to shortDescription
+        )
+        MainActivity.navigationComponent.navigationController().navigate(
+            R.id.action_newsFragment_to_newsDetailFragment,
+            bundle,
+        )
     }
 
     private fun setupListeners() {
@@ -83,4 +98,5 @@ class NewsFragment: BaseFragment<FragmentNewsBinding>(
         val decorator = DividerItemDecoration(this.context, RecyclerView.VERTICAL)
         binding.rvNews.addItemDecoration(decorator)
     }
+
 }

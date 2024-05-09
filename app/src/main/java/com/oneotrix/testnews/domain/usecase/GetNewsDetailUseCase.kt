@@ -6,5 +6,5 @@ import javax.inject.Inject
 class GetNewsDetailUseCase @Inject constructor (
     private val newsRepository: NewsRepository
 ) {
-    operator fun invoke(id: Long) = newsRepository.getNewsDetail(id)
+    suspend operator fun invoke(id: Long): String = newsRepository.getNewsDetail(id).fullDescription
 }

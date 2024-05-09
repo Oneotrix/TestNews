@@ -1,6 +1,7 @@
 package com.oneotrix.testnews.domain.repository
 
 import com.oneotrix.testnews.domain.models.Category
+import com.oneotrix.testnews.domain.models.DetailNews
 import com.oneotrix.testnews.domain.models.ShortNews
 
 interface NewsRepository {
@@ -11,7 +12,7 @@ interface NewsRepository {
 
     suspend fun getNewsPageByCategory(categoryId: Long, page: Int) : List<ShortNews>
 
-    fun getNewsDetail(id: Long)
+    suspend fun getNewsDetail(id: Long): DetailNews
 
     fun getCurrentPage() : Int
 

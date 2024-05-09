@@ -2,6 +2,7 @@ package com.oneotrix.testnews.data
 
 import com.oneotrix.testnews.data.remote.RemoteDataSource
 import com.oneotrix.testnews.domain.models.Category
+import com.oneotrix.testnews.domain.models.DetailNews
 import com.oneotrix.testnews.domain.models.ShortNews
 import com.oneotrix.testnews.domain.repository.NewsRepository
 
@@ -31,8 +32,10 @@ class NewsRepositoryImpl(
             .map { MapperData.mapNewsResponse(it) }
     }
 
-    override fun getNewsDetail(id: Long) {
-        TODO("Not yet implemented")
+    override suspend fun getNewsDetail(id: Long): DetailNews {
+        val response = remoteDataSource.getDetailNews(id)
+
+        return MapperData.mapDetailNewsResponse(response.news)
     }
 
     override fun getCurrentPage(): Int {

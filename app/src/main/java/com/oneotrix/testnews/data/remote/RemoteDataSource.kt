@@ -2,6 +2,7 @@ package com.oneotrix.testnews.data.remote
 
 import com.oneotrix.testnews.data.Api
 import com.oneotrix.testnews.data.remote.response.CategoriesResponse
+import com.oneotrix.testnews.data.remote.response.DetailNewsResponse
 import com.oneotrix.testnews.data.remote.response.NewsResponse
 import javax.inject.Inject
 
@@ -18,6 +19,10 @@ class RemoteDataSource @Inject constructor(
 
     suspend fun getNewsPage(categoryId: Long, page: Int): NewsResponse {
         return api.getNews(categoryId, page)
+    }
+
+    suspend fun getDetailNews(id: Long): DetailNewsResponse {
+        return api.getDetailNews(id)
     }
 
 }
